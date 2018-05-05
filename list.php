@@ -1,19 +1,18 @@
 <?php
 
-$files = array_slice(scandir('./Tests'), 2);
+$files = array_slice(scandir('./DownloadFiles/'), 2);
 //var_dump($files);
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Список загруженных тестов</title>
 </head>
 <body>
-    <h1>Список тестов</h1>
+    <h1>Список загруженных тестов</h1>
 <nav>
     <ul>
         <li><a href="admin.php">Загрузить тест</a></li>
@@ -26,6 +25,7 @@ $files = array_slice(scandir('./Tests'), 2);
             echo "</pre>";
             
            } break;
+       
         } ?>
         
         <form action="" method="post" enctype="multipart/form-data">
@@ -43,7 +43,7 @@ $files = array_slice(scandir('./Tests'), 2);
 
         <?php if (isset($_POST['number'])) {
                 if ($_POST['number'] > $j) {
-                    header('Location: 404.php');
+                    header( "HTTP/1.1 404 Not Found" );
                 } else {
                     $id = $_POST['number'];
                     echo $id;
