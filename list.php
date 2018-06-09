@@ -1,8 +1,5 @@
 <?php
-
 $files = array_slice(scandir('./DownloadFiles/'), 2);
-//var_dump($files);
-
 ?>
 
 <!DOCTYPE html>
@@ -41,14 +38,10 @@ $files = array_slice(scandir('./DownloadFiles/'), 2);
 
         </form>
 
-        <?php if (isset($_POST['number'])) {
-                if ($_POST['number'] > $j) {
-                    header( "HTTP/1.1 404 Not Found" );
-                } else {
-                    $id = $_POST['number'];
-                    echo $id;
-                    header("Location: test.php?id=$id");
-                    }
+        <?php 
+        if (isset($_POST['number'])) {
+            $id = $_POST['number'];
+            header("Location: test.php?id=$id");
         }?>
     </ul>
 </nav>

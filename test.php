@@ -2,9 +2,13 @@
 
 $test_dir = "./DownloadFiles/test";
 $test_id = $test_dir.$_GET["id"].".json";
-$json_file = file_get_contents($test_id);
-$json_array = json_decode($json_file, true);
-
+if (file_exists($test_id)) {
+    $json_file = file_get_contents($test_id);
+    $json_array = json_decode($json_file, true);
+} else {
+    header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
